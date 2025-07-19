@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+/* body{
+    background-color: #3e1c07;
+    color: #e9fe56;
+    
+} */
+
+button:hover{
+    cursor: pointer;
+}
