@@ -21,10 +21,14 @@ export default function Output(props: OutputInterface){
         // Clé pour les éléments
         let boxKey : number = 0
         let boxElementKey : number = 0
-        let boxMode : boolean = false
+        let boxMode : string = ""
         let boxBackgroundColor : string = "#e9fe56"
         let boxTextColor : string = "#3e1c07"
         let boxBorderRadius : number = 0
+        let boxTop : number = 0
+        let boxLeft: number = 0
+        let boxPadding : number = 0
+        let boxRotate : number = 0
         
         let subBoxKey : number = 0
 
@@ -44,8 +48,8 @@ export default function Output(props: OutputInterface){
             }
             // Gestions des boites
             // Activation du mode Boîte
-            if (lineArray[0].trim() === "B" && !boxMode){
-                boxMode = true
+            if (lineArray[0].trim() === "B" && boxMode === ""){
+                boxMode = "Normal"
                 if (lineArray.length >= 3){
                     if (lineArray[1].trim() != "NULL" && lineArray[2].trim() != "NULL"){
                         boxBackgroundColor = lineArray[1]
@@ -56,30 +60,62 @@ export default function Output(props: OutputInterface){
                     boxBorderRadius = Number(lineArray[3]) 
                 }
             }
-
+            // Boite avec une position absolue
+            if (lineArray[0].trim() == "AB" && boxMode === ""){
+                boxMode = "Absolute"
+                if (lineArray.length >= 3){
+                    if (lineArray[1].trim() != "NULL" && lineArray[2].trim() != "NULL"){
+                        boxBackgroundColor = lineArray[1]
+                        boxTextColor = lineArray[2]
+                    }
+                }
+                if (lineArray.length >= 4){
+                    boxBorderRadius = Number(lineArray[3]) 
+                }
+                if (lineArray.length >= 6){
+                    boxTop = Number(lineArray[4])
+                    boxLeft = Number(lineArray[5])
+                }
+                if (lineArray.length >= 7){
+                    boxPadding = Number(lineArray[6])   
+                }
+                if (lineArray.length >= 8){
+                    boxRotate = Number(lineArray[7])
+                }
+            }
             // Ajout d'une boite avec tout les éléments temporaire et désactivation du mode Boîte
-            if (lineArray[0].trim() === "E" && boxMode){
-                tempElements.push(<div key={boxKey} 
-                    className="mt-4 ml-20 mr-20 p-4 flex flex-wrap items-center"
-                    style={{backgroundColor: boxBackgroundColor, color: boxTextColor, borderRadius: `${boxBorderRadius}px`}}>{tempBox}</div>)
+            if (lineArray[0].trim() === "E" && boxMode !== ""){
+                if (boxMode == "Normal"){
+                    tempElements.push(<div key={boxKey} 
+                        className="mt-4 ml-20 mr-20 p-4 flex flex-wrap items-center"
+                        style={{backgroundColor: boxBackgroundColor, color: boxTextColor, borderRadius: `${boxBorderRadius}px`}}>{tempBox}</div>)
+                }
+                if (boxMode == "Absolute"){
+                    tempElements.push(<div key={boxKey} 
+                        className="flex flex-wrap items-center absolute"
+                        style={{transform: `rotate(${boxRotate}deg)`, padding: `${boxPadding}px`, top: `${boxTop}px`, left: `${boxLeft}%`, backgroundColor: boxBackgroundColor, color: boxTextColor, borderRadius: `${boxBorderRadius}px`}}>{tempBox}</div>)
+                }
                 tempBox = []
                 boxKey++
                 boxElementKey = 0
-                boxMode = false
+                boxMode = ""
                 boxBackgroundColor = "#e9fe56"
                 boxTextColor = "#3e1c07"
                 boxBorderRadius = 0
                 subBoxKey = 0
+                boxTop = 0
+                boxLeft = 0
+                boxRotate = 0
             }
             // Publier les dernière balise vers le centre
-            if (lineArray[0].trim() == "PN" && boxMode){
+            if (lineArray[0].trim() == "PN" && boxMode !== ""){
                 tempBox.push(<div key={`${boxKey}-subBox-${subBoxKey}`} 
                     className="w-full flex flex-wrap items-center"
                     style={{backgroundColor: boxBackgroundColor, color: boxTextColor, borderRadius: `${boxBorderRadius}px`}}>{tempSubBox}</div>)
                 tempSubBox = []
                 subBoxKey++
             }
-            if (lineArray[0].trim() == "PC" && boxMode){
+            if (lineArray[0].trim() == "PC" && boxMode !== ""){
                 tempBox.push(<div key={`${boxKey}-subBox-${subBoxKey}`} 
                     className="w-full flex flex-wrap items-center justify-center"
                     style={{backgroundColor: boxBackgroundColor, color: boxTextColor, borderRadius: `${boxBorderRadius}px`}}>{tempSubBox}</div>)
@@ -88,29 +124,29 @@ export default function Output(props: OutputInterface){
             }
 
             // Ajout d'un texte avec la police par défaut sur le site
-            if (lineArray[0].trim() === "T" && boxMode){
+            if (lineArray[0].trim() === "T" && boxMode !== ""){
                 tempSubBox.push(<h2 className="m-1" key={`${boxKey}-${boxElementKey}`}>{line.slice(2, line.length)}</h2>)
                 boxElementKey++
             }
             // Ajout d'un texte avec la police de LaTeX
-            if (lineArray[0].trim() === "TL" && boxMode){
+            if (lineArray[0].trim() === "TL" && boxMode !== ""){
                 tempSubBox.push(<h2 key={`${boxKey}-${boxElementKey}`}><InlineMath>{String.raw`\text{${line.slice(2, line.length)}}`}</InlineMath></h2>)
                 boxElementKey++
             }
             // Ajout d'une formule mathématique
-            if (lineArray[0].trim() === "M" && boxMode){
+            if (lineArray[0].trim() === "M" && boxMode !== ""){
                 tempSubBox.push(<h2 key={`${boxKey}-${boxElementKey}`}><InlineMath>{String.raw`\displaystyle{${line.slice(2, line.length)}}`}</InlineMath></h2>)
                 boxElementKey++
             }
-            if (lineArray[0].trim() === "I" && boxMode){
+            if (lineArray[0].trim() === "I" && boxMode !== ""){
                 if (lineArray.length >= 5){
-                    tempSubBox.push(<Image style={{borderRadius: `${Number(lineArray[4])}px`}} className="m-3" alt="image" src={String.raw`${lineArray[1]}`} key={`${boxKey}-${boxElementKey}`} width={Number(lineArray[2])} height={Number(lineArray[3])} />)
+                    tempSubBox.push(<Image style={{borderRadius: `${Number(lineArray[4])}px`}} className={boxMode === "Normal" ? "m-3" : ""} alt="image" src={String.raw`${lineArray[1]}`} key={`${boxKey}-${boxElementKey}`} width={Number(lineArray[2])} height={Number(lineArray[3])} />)
                 }
                 boxElementKey++
             }
             
             // Echappement
-            if (lineArray[0].trim() === "BREAK" && boxMode){
+            if (lineArray[0].trim() === "BREAK" && boxMode !== ""){
                 tempSubBox.push(<div key={`${boxKey}-${boxElementKey}`} className="w-full mt-1 mb-1"></div>)
                 boxElementKey++
             }

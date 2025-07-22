@@ -9,7 +9,7 @@ RC #511f33 #e0ff8a #511f33
 ---
 B : new Box [ background-color text-color border-radius (soon...) text-font ]
 
-(SOON) : Box pins & badges
+Box pins & badges -> PR (Push Relative)
 
 example:
 B
@@ -51,3 +51,5 @@ PC
 E
 ---
 I : Image [ src image-url width height border-radius ]
+
+AB : Absolute Box [ background-color text-color shift-top shift-left padding ] , made basic for make badges & pins for boxes
