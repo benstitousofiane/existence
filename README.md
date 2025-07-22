@@ -2,7 +2,16 @@
 
 Notebooks mathématiques magnifiques 🤩
 
-## Exemple de configuration et de rendu (code .exi)
+## Exemple de configuration et de rendu
+
+### Rendu
+
+rendu :
+<img width="3148" height="1435" alt="Image" src="https://github.com/user-attachments/assets/b6298a97-db6c-4648-8f5a-3c8a8e0f3603" />
+
+<img width="3127" height="1448" alt="Image" src="https://github.com/user-attachments/assets/a3226fcf-d53a-4c8b-85db-66b144619b99" />
+
+### Codes sources (code .exi)
 couleurs rouges avec rotations
 ```
 RC #ff8a8a
@@ -88,10 +97,4 @@ PC
 E
 
 ```
-
-rendu :
-<img width="3148" height="1435" alt="Image" src="https://github.com/user-attachments/assets/b6298a97-db6c-4648-8f5a-3c8a8e0f3603" />
-
-<img width="3127" height="1448" alt="Image" src="https://github.com/user-attachments/assets/a3226fcf-d53a-4c8b-85db-66b144619b99" />
-
 (ajuster les Absolute Box (AB) en fonction de votre écran.)
