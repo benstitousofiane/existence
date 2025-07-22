@@ -12,7 +12,7 @@ interface HomeInterface{
 export default function Home(props: HomeInterface){
     return (
         // Home
-    <div className={`${props.currentWindow == "Home" ? "" : "hidden"} bg-[#3e1c07] text-[#e9fe56] flex flex-col justify-center items-center w-full h-screen text-3xl`}>
+    <div className={`${props.currentWindow == "Home" ? "" : "hidden"} bg-[#3e1c07] text-[#e9fe56] flex flex-col justify-center items-center w-full h-screen text-2xl`}>
       <div className="text-5xl">
         <BlockMath>{String.raw`\exists x`}</BlockMath>
       </div>
@@ -32,4 +32,4 @@ export default function Home(props: HomeInterface){
     </div>
 
     )
-}
+} 
