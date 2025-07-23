@@ -18,7 +18,7 @@ export default function Output(props: OutputInterface){
     // Modes pour la gestions des éléments qui vont apparaître
 
     useEffect(() => {
-        // Clé pour les éléments
+        // variables pour les boîtes
         let boxKey : number = 0
         let boxElementKey : number = 0
         let boxMode : string = ""

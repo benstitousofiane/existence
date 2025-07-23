@@ -2,8 +2,7 @@
 import { ReactNode, useRef, useState } from 'react';
 
 import Home from '@/components/Home';
-
-import Output from '@/components/edit/Output';
+import Edit from '@/components/edit/Edit';
 
 
 
@@ -45,7 +44,7 @@ export default function App() {
   return (
     <>
       <Home currentWindow={currentWindow} inputFile={inputFile} clickOnInputFile={clickOnInputFile} handleFileInput={handleFileInput} />
-      <Output currentWindow={currentWindow} fileContent={fileContent ? fileContent : []}/>
+      <Edit currentWindow={currentWindow} fileContent={fileContent ? fileContent : []}/>
     </>
   );
 }
