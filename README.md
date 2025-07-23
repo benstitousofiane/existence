@@ -6,21 +6,26 @@ Notebooks mathématiques magnifiques 🤩
 
 ### Rendu
 
-<img width="3148" height="1435" alt="Image" src="https://github.com/user-attachments/assets/b6298a97-db6c-4648-8f5a-3c8a8e0f3603" />
+<img width="2842" height="1379" alt="Image" src="https://github.com/user-attachments/assets/bc941732-941d-4f7c-80fc-cd45548dca27" />
 
-<img width="3127" height="1448" alt="Image" src="https://github.com/user-attachments/assets/a3226fcf-d53a-4c8b-85db-66b144619b99" />
+<img width="2759" height="1470" alt="Image" src="https://github.com/user-attachments/assets/1b825e89-6a0c-43ab-a454-b7874b6af329" />
 
 ### Codes sources (code .exi)
-couleurs rouges avec rotations
+couleurs rouges avec rotation
 ```
 RC #ff8a8a
 B #ff8a8a #ff8a8a
 E
 
-AB #440a0a #ff8a8a 100 45 93 10
+AB #440a0a #ff8a8a 100 45 85 10
 TL ✿
 PC
 E
+
+#AB #440a0a #ff8a8a 20 35 93 0
+#I https://pbs.twimg.com/media/CWHtXTiWIAAi_0s.jpg 50 70 20
+#PC
+#E
 
 B #1d0404 #ff8a8a 8
 TL Bienvenue sur Existance !
@@ -29,10 +34,7 @@ M (x+y)^n = \sum_{k = 0}^n \binom{n}{k}x^{n-k}y^{k}
 PC
 E
 
-B #ff8a8a #ff8a8a
-E
-
-AB #1d0404 #ff8a8a 10 435 -7 20 -90
+AB #1d0404 #ff8a8a 10 390 1 20 -90
 TL Theorem 2 - Théorème D'Alembert-Gauss
 PC
 E
@@ -59,7 +61,7 @@ RC #141152
 B #141152 #141152
 E
 
-AB #ebff85 #9a9dff 100 45 93 10
+AB #ebff85 #9a9dff 100 45 85 10
 TL ✿
 PC
 E
@@ -94,6 +96,7 @@ TL avec
 M \#S \geqslant 1
 PC
 E
+
 
 ```
 (ajuster les Absolute Box (AB) en fonction de votre écran.)

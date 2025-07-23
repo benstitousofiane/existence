@@ -87,7 +87,7 @@ export default function Output(props: OutputInterface){
             if (lineArray[0].trim() === "E" && boxMode !== ""){
                 if (boxMode == "Normal"){
                     tempElements.push(<div key={boxKey} 
-                        className="mt-4 ml-20 mr-20 p-4 flex flex-wrap items-center"
+                        className="mt-4 ml-52 mr-52 p-4 flex flex-wrap items-center"
                         style={{backgroundColor: boxBackgroundColor, color: boxTextColor, borderRadius: `${boxBorderRadius}px`}}>{tempBox}</div>)
                 }
                 if (boxMode == "Absolute"){
