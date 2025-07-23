@@ -17,7 +17,7 @@ export default function Home(props: HomeInterface){
         <BlockMath>{String.raw`\exists x`}</BlockMath>
       </div>
       <BlockMath>{String.raw`
-        \text{Bienvenue sur } \text{Existance} \\
+        \text{Bienvenue sur } \text{Existence} \\
         \text{Votre notebook mathématique moderne et gratuit} \ \forall t \in \text{Vie}`}
       </BlockMath>
       

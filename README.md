@@ -6,9 +6,9 @@ Notebooks mathématiques magnifiques 🤩
 
 ### Rendu
 
-<img width="2842" height="1379" alt="Image" src="https://github.com/user-attachments/assets/bc941732-941d-4f7c-80fc-cd45548dca27" />
+<img width="2848" height="1355" alt="Image" src="https://github.com/user-attachments/assets/f8cbaa38-5071-4c6a-a260-2f31fa33e5ea" />
 
-<img width="2759" height="1470" alt="Image" src="https://github.com/user-attachments/assets/1b825e89-6a0c-43ab-a454-b7874b6af329" />
+<img width="2511" height="1475" alt="Image" src="https://github.com/user-attachments/assets/baa17b7f-3ea4-4ecc-b324-d444a5b98629" />
 
 ### Codes sources (code .exi)
 couleurs rouges avec rotation
@@ -28,7 +28,7 @@ E
 #E
 
 B #1d0404 #ff8a8a 8
-TL Bienvenue sur Existance !
+TL Bienvenue sur Existence !
 BREAK
 M (x+y)^n = \sum_{k = 0}^n \binom{n}{k}x^{n-k}y^{k}
 PC
@@ -67,7 +67,7 @@ PC
 E
 
 B #9a9dff #141152 8
-TL Bienvenue sur Existance !
+TL Bienvenue sur Existence !
 BREAK
 M (x+y)^n = \sum_{k = 0}^n \binom{n}{k}x^{n-k}y^{k}
 PC
