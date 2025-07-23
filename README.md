@@ -1,4 +1,4 @@
-# Existance 📚🔢✨
+# Existence 📚🔢✨
 
 Notebooks mathématiques magnifiques 🤩
 
