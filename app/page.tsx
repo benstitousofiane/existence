@@ -4,8 +4,6 @@ import { ReactNode, useRef, useState } from 'react';
 import Home from '@/components/Home';
 import Edit from '@/components/edit/Edit';
 
-
-
 export default function App() {
   // Initialisation de variables
   const [currentWindow, setCurrentWindow] = useState<string>("Home")
@@ -24,7 +22,7 @@ export default function App() {
   const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Objet qui permet de lire un fichier
     const reader = new FileReader()
-    
+
     // Ce que l'on fait une fois que le fichiers soit chargé par une lecture
     reader.onload = (event) => {
       if (event.target?.result){
@@ -36,7 +34,6 @@ export default function App() {
     // Si le fichier et retrouver et qu'il a au moins une propriété tel qu'un nom
     if (e.target.files && e.target.files.length > 0){
       setFileName(e.target.files[0].name)
-
       // Lecture du fichier en .exi
       reader.readAsText(e.target.files[0])
     }

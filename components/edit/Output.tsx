@@ -164,7 +164,7 @@ export default function Output(props: OutputInterface){
     return (
         <>
         <div 
-        className={`${props.currentWindow == "Edit" ? "" : "hidden"} w-full h-screen`} 
+        className="w-full h-screen" 
         style={{
             backgroundColor: backgroundColor
         }}>

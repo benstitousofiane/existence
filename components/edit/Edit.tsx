@@ -8,9 +8,9 @@ interface EditInterface{
 
 export default function Edit(props: EditInterface){
     return (
-        <>
+        <div className={`${props.currentWindow == "Edit" ? "" : "hidden"}`}>
             <Output currentWindow={props.currentWindow} fileContent={props.fileContent}/>
             <Footer/>
-        </>
+        </div>
     )
 }
