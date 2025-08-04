@@ -3,13 +3,13 @@ import Footer from "./Footer"
 
 interface EditInterface{
     currentWindow: string
-    fileContent: string[]
+    fileName: string
 }
 
 export default function Edit(props: EditInterface){
     return (
         <div className={`${props.currentWindow == "Edit" ? "" : "hidden"}`}>
-            <Output currentWindow={props.currentWindow} fileContent={props.fileContent}/>
+            <Output currentWindow={props.currentWindow} fileName={props.fileName}/>
             <Footer/>
         </div>
     )
