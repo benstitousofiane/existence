@@ -1,24 +1,13 @@
 import { ReactNode, useEffect, useState } from "react"
 import { InlineMath, BlockMath } from 'react-katex';
-import { readTextFile, BaseDirectory } from '@tauri-apps/plugin-fs';
 interface OutputInterface{
     currentWindow: string
     fileName: string
+    fileContent: string[]
 }
 
 
 export default function Output(props: OutputInterface){
-    const [fileContent, setFileContent] = useState<string[]>([])
-
-    async function setLinesOfFileContent(){
-        const file = await readTextFile(`notesmath/${props.fileName}`, {
-            baseDir: BaseDirectory.AppData,
-        });
-
-        setFileContent(file.split("\n"))
-        return 0
-    }
-    setLinesOfFileContent()
     
     // Gestion des couleurs
     const [backgroundColor, setBackgroundColor] = useState<string>("#3e1c07")
@@ -51,7 +40,7 @@ export default function Output(props: OutputInterface){
         let tempLineKey : number = NaN
 
 
-        for (const line of fileContent){
+        for (const line of props.fileContent){
             // lineArray représente un tableau avec tout les mots de la ligne en cours d'analyse
             // lineArray[0] représente le mode de sortie : s'il s'agit d'un texte ou d'une formule mathématique par exemple
             const lineArray = line.split(" ") // pour éviter les code d'échappement invisible à la fin on utilise toString
@@ -173,7 +162,7 @@ export default function Output(props: OutputInterface){
         }
         setLastBoxId(boxKey)
         setElements(tempElements)
-    }, [fileContent])
+    }, [props.fileContent])
     
     // Mise à jour de la couleur de fond
     useEffect(() => {

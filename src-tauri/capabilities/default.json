@@ -5,15 +5,24 @@
   "windows": [
     "main"
   ],
+  
   "permissions": [
-    "core:default",
-    "opener:default",
+    "core:resources:allow-close", 
+    "core:resources:default",
+    "fs:allow-open",
+    "fs:allow-document-read-recursive",
+    "fs:allow-document-write-recursive",
+    "fs:allow-document-read",
+    "fs:allow-document-write",
+    "fs:allow-document-meta-recursive",
+    "fs:allow-document-meta",
+    "fs:scope-document-recursive",
+    "fs:scope-document",
+    "fs:scope-document-index",
     "fs:default",
-    "fs:allow-write-text-file",
-    "fs:allow-app-write", 
-    "fs:allow-app-write-recursive", 
-    "fs:allow-appcache-write", 
-    "fs:allow-appcache-write-recursive",
-    "fs:allow-appconfig-write"
+    {
+      "identifier": "fs:scope-document-recursive",
+      "allow": [{ "path": "$DOCUMENT/**" }]
+    }
   ]
 }
