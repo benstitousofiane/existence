@@ -20,10 +20,10 @@ AB #440a0a #ff8a8a 100 45 85 10
 TL ✿
 PC
 E
-#AB #440a0a #ff8a8a 20 35 93 0
+#AB #440a0a #ff8a8a 100 45 85 0
 #I https://pbs.twimg.com/media/CWHtXTiWIAAi_0s.jpg 50 70 20
 #PC
-#E
+E
 B #1d0404 #ff8a8a 8
 TL Bienvenue sur Existence !
 BREAK
