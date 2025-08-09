@@ -13,21 +13,31 @@ interface HomeInterface{
 
 export default function Home(props: HomeInterface){
   const [notesNames, setNotesNames ] = useState<ReactNode[]>()
+  const [displayNewFileWindow, setDisplayNewFileWindow] = useState<boolean>(false)
 
-  async function newNote(){
-    const notesMathExists = await exists('notesmath', {
-      baseDir: BaseDirectory.Document,
-    })
-    if (!notesMathExists){
-      await mkdir('notesmath', {
+  function newNote(name: string){
+      async function asyncNewNote(name: string){
+        // Faire un dossier pour l'app sur Document s'il n'existe pas
+      const appDirExists = await exists('', { baseDir: BaseDirectory.Document });
+      if (!appDirExists){
+        await mkdir('', {
+          baseDir: BaseDirectory.Document,
+        });
+      }
+
+      const existenceExists = await exists('existence', {
         baseDir: BaseDirectory.Document,
-      });
+      })
+      if (!existenceExists){
+        await mkdir('existence', {
+          baseDir: BaseDirectory.Document,
+        });
+      }
+      const note = await create(`existence/${name}.exi`, { baseDir: BaseDirectory.Document });
+      await note.write(new TextEncoder().encode('RC #3e1c07'));
+      await note.close();
     }
-    // pour linux les fichiers sont dans .local/share/com.existences.app
-    const note = await create('notesmath/testnotes.exi', { baseDir: BaseDirectory.Document });
-    await note.write(new TextEncoder().encode('oui'));
-    await note.close();
-    console.log("note généré")
+    asyncNewNote(name)
   }
   
   async function listNotes(){
@@ -39,20 +49,19 @@ export default function Home(props: HomeInterface){
       });
     }
 
-    const notesMathExists = await exists('notesmath', {
+    const existenceExists = await exists('existence', {
       baseDir: BaseDirectory.Document,
     })
-    if (!notesMathExists){
-      await mkdir('notesmath', {
+    if (!existenceExists){
+      await mkdir('existence', {
         baseDir: BaseDirectory.Document,
       });
     }
-    const entries = await readDir('notesmath', { baseDir: BaseDirectory.Document });
+    const entries = await readDir('existence', { baseDir: BaseDirectory.Document });
 
     const notes : ReactNode[] = []
     for (const note of entries){
       notes.push(<button className='bg-[#e9fe56] text-[#3e1c07] rounded-r-full px-4 pr-7' key={note.name} onClick={() => {
-        const name = note.name
         props.setLinesOfFileContent(note.name)
         props.setCurrentWindow("Edit")
 
@@ -75,13 +84,15 @@ export default function Home(props: HomeInterface){
     <div className='mt-10 text-center'>
       
       <span className='bg-[#e9fe56] text-[#3e1c07] m-2 rounded-t-2xl p-4'><button onClick={() => {
-        // newNote()
+        setDisplayNewFileWindow(true)
       }
       }><BlockMath>{String.raw`\text{Nouvelle note}`}</BlockMath></button></span>
+
       <span className='bg-[#e9fe56] text-[#3e1c07] m-2 rounded-t-2xl p-4'><button onClick={() => {
         listNotes()
       }
       }><BlockMath>{String.raw`\text{Actualiser}`}</BlockMath></button></span>
+
     </div>
 
     <BlockMath>{String.raw`\text{Vos notes :}`}</BlockMath>
@@ -89,7 +100,7 @@ export default function Home(props: HomeInterface){
       {notesNames}
     </div>
     
-    {/* <NewFileWindow/> */}
+    <NewFileWindow newNote={newNote} displayNewFileWindow={displayNewFileWindow} setDisplayNewFileWindow={setDisplayNewFileWindow}/>
   </div>
 
   )

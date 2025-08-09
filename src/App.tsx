@@ -12,7 +12,7 @@ export default function App() {
   const [fileContent, setFileContent] = useState<string[]>([])
 
   async function setLinesOfFileContent(target: string){
-        const file = await readTextFile(`notesmath/${target}`, {
+        const file = await readTextFile(`existence/${target}`, {
             baseDir: BaseDirectory.Document,
         });
         setFileContent(file.split("\n"))
